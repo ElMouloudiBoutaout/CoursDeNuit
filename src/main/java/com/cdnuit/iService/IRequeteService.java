@@ -1,19 +1,10 @@
 package com.cdnuit.iService;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.cdnuit.enumartion.EtatRequete;
 import com.cdnuit.model.Requete;
-import com.cdnuit.model.Utilisateur;
-import com.cdnuit.repository.RequeteRepository;
 
-public interface IUtilisateurService {
+public interface IRequeteService {
 	
-	void EnvoyerRequete(Requete req);
-	void RecevoireRequete(Requete requete);
- 
-	 
 	default public void accepterRequete(Requete requete) {
 		// TODO Auto-generated method stub
 		requete.setEtat(EtatRequete.Accepte);
@@ -30,6 +21,8 @@ public interface IUtilisateurService {
 		// TODO Auto-generated method stub
 		requete.setEtat(EtatRequete.Annule);
 	}
-
 	
+	
+	public void supprimerRequete(Requete requete);
+
 }

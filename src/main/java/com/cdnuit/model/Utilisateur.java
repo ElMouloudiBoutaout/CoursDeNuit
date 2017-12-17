@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import com.cdnuit.enumartion.Genre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -36,10 +37,14 @@ public abstract class Utilisateur {
 	private String nom;
 	private String prenom;
 	private String email;
+	
+	@JsonIgnore
 	private String motDepasse;
 
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
+	
+	private boolean isAdmin=false; 
 
 	@Lob
 	private Byte[] Image;
@@ -111,6 +116,14 @@ public abstract class Utilisateur {
 
 	public void setGenre(Genre genre) {
 		this.genre = genre;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }
